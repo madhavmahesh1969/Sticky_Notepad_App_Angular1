@@ -1,0 +1,176 @@
+h1 {
+    text-align: center;
+}
+#canvas {
+    background-color: #000;
+    //z-index: 1; //if position is not there
+    //display: block;
+    //position: relative;
+    float: left;
+}
+.legend {
+    position: absolute;
+}
+.enableSticky {
+    background-color: #89d63f;
+    border: 1px solid #89d63f;
+    height: 150px;
+    width: 150px;
+    /* Firefox */
+    -moz-box-shadow: 5px 5px 7px rgba(249, 246, 246, 0.28);
+    /* Safari+Chrome */    
+    -webkit-box-shadow: 5px 5px 7px rgba(249, 246, 246, 0.28);
+    /* Opera */    
+    box-shadow: 5px 5px 7px rgba(249, 246, 246, 0.28);
+    -moz-transition: -moz-transform .15s linear;
+    -o-transition: -o-transform .15s linear;
+    -webkit-transition: -webkit-transform .15s linear;
+}
+.enableSticky:hover,
+.enableSticky:focus {
+    -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+    -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, .7);
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    //position:relative;
+    z-index: 5;
+}
+.disableSticky {
+    height: 8px;
+    width: 8px;
+    background-color: #89d63f;
+    border: 1px solid #89d63f;
+    border-radius: 50%;
+}
+span:nth-child(even) .enableSticky {
+    -o-transform: rotate(4deg);
+    -webkit-transform: rotate(4deg);
+    -moz-transform: rotate(4deg);
+    //position:relative;
+    top: 5px;
+    //background:#cfc;
+}
+span:nth-child(3n) .enableSticky {
+    -o-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    top: -5px;
+}
+.title,
+.detail {
+    //width:100%;
+    height: 80%;
+    padding-left: 5px;
+}
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+.detail {
+    font-family: "Reenie Beanie", arial, sans-serif;
+    font-size: 180%;
+    word-wrap: break-word;
+    overflow: auto;
+    display: block;
+    min-height: 60px;
+}
+.modal-window {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+sup {
+    color: red;
+}
+.enableModal {
+    display: block;
+}
+.closeModal {
+    display: none;
+}
+.modal-content {
+    color: white;
+    background-color: #7ea1a7;
+    top: 20%;
+    left: 35%;
+    display: block;
+    position: absolute;
+    padding: 30px;
+    border-radius: 8px;
+}
+.modal-heading {
+    text-align: center;
+}
+.cmd-buttons {
+    float: right;
+}
+.buttons-style {
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 4px;
+}
+.success-button {
+    background: #89d63f;
+    border-color: #89d63f;
+}
+.close-button {
+    background: #e60a0a;
+    border-color: #e60a0a;
+}
+.modal-close,
+.sticky-close,
+.sticky-delete {
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+.sticky-delete {
+    margin-top: -14px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background: url(../images/delete.svg);
+}
+
+.sticky-delete-icon {
+    display: block;
+    float: left;
+    width: 20px;
+    padding-top: 18px;
+    background: url(../images/delete.svg);
+}
+
+.modal-close:after,
+.sticky-close:after {
+    content: '×';
+}
+.form-labels {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.help-points {
+    left: 10px;
+    margin-left: 18px;
+    display: block;
+}
+
+.help-heading {
+    text-align: center;
+}
+
+ul li {
+    padding-bottom: 5px;
+}

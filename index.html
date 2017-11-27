@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Get the coordinates on canvas</title>
+        <meta charset="utf-8" />
+        <link href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css">
+        <link href="./css/sticky_styles.css" rel="stylesheet" type="text/css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    </head>
+
+    <body data-ng-app="stickyApp" data-ng-controller="stickyController as stc">
+
+        <h1>Sticky Notes !!!</h1>
+        <br>
+        <canvas id="canvas" width="900" height="600" style="cursor:pointer;background:url('./images/images.jpg');left:15%;" data-ng-click="stc.canvasClick($event)">
+        </canvas>
+        
+        <div class="help-points">
+        
+            <h2 class="help-heading">Steps to use</h2>
+            <br/>
+            <div style="display:flex;">
+                <ul>
+                    <li>Click anywhere on the black canvas.
+                    </li>
+                    <li>Given input in the <Strong>Add new sticky pad</strong> form and click on <strong>Create Note</strong> button.
+                    </li>
+                    <li><span class="sticky-delete-icon "></span> - Click to delete a note.
+                    </li>
+                </ul>
+            </div>    
+        </div>
+        
+        <span data-ng-if="stc.tasks" data-ng-repeat="task in stc.tasks  track by $index">
+            <span class="sticky" data-ng-if="task.display">
+                <span class="legend enableSticky"
+                                data-ng-style="{'top':task.yVal+'px', 'left':task.xVal+'px'}"
+                                data-ng-click="stc.toogleStickyPad($index)">
+                    <span class="title">{{task.title}}</span>
+                    <span class="sticky-close" data-ng-click="stc.toogleStickyPad($index)"></span>
+                    <br/>
+                    <span class="detail">{{task.details}}</span>
+                    <span class="sticky-delete" data-ng-click="stc.deleteStickyPad($index)">
+                    </span>
+                </span>
+            </span>
+        </span>
+
+        <span data-ng-repeat="task in stc.tasks track by $index" data-ng-if="!task.display">
+            <span class="legend disableSticky" style="cursor:pointer;"
+                                data-ng-style="{'top':task.yVal+'px', 'left':task.xVal+'px'}"
+                                data-ng-click="stc.toogleStickyPad($index)">
+            </span>
+        </span>
+
+        <div id="modalWindow" class="modal-window" data-ng-class="{'enableModal':stc.enableModalWindow}">
+            <div class="modal-content">
+                <span class="modal-close" data-ng-click="stc.closeModal()"></span>
+                <div class="modal-heading">
+                    <h2> Add new sticky pad </h2>
+                </div>
+                <br/>
+                <form name="detailsForm" data-ng-submit="stc.addNewStickyData(stc.data)" novalidate>
+                    <table>
+                        <tr>
+                            <td class="form-labels">Title<sup>*</sup>
+                            </td>
+                            <td>
+                                <input type="text" name="title" data-ng-model="stc.data.title" required/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-labels">Details<sup>*</sup>
+                            </td>
+                            <td>
+                                <input type="text" name="detail" data-ng-model="stc.data.details" required/>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <hr/>
+                    <div class="cmd-buttons">
+                        <button type="submit" class="buttons-style" data-ng-class="{'success-button':detailsForm.$valid}" data-ng-disabled="detailsForm.$invalid">Create Note</button>
+                        <button type="button" class="buttons-style close-button" data-ng-click="stc.closeModal()">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="./js/sticky_app.js"></script>
+    </body>
+</html>
